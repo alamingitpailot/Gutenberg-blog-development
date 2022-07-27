@@ -10,7 +10,7 @@ registerBlockType( metadata.name, {
 	title: __("Test Block two", "test-block"),
 	icon: {
 		src: 'admin-appearance',
-		background: "red",
+		background: "blue",
 		foreground:'white'
 	},
 	category: 'MyBlock',

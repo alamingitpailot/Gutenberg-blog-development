@@ -31,11 +31,16 @@ add_action( 'init', 'create_block_test_block_block_init' );
 
 
 // categories add block 
-function custom_categories($cat) {
+function custom_categories($cat,$post) {
+
+	if('page' !== get_post_type($post)){
+		return $cat;
+	}
+
 	return array_merge($cat,array(
 		array(
 			'slug' => 'MyBlock',
 			'title' => 'Custom MyBlock'
 		)));
 }
-add_filter('block_categories','custom_categories');
+add_filter('block_categories','custom_categories',10,2);

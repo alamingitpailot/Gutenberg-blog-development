@@ -1,5 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import { useBlockProps } from '@wordpress/block-editor';
 import './style.scss';
 
 import Edit from './edit';
@@ -15,15 +16,18 @@ registerBlockType( metadata.name, {
 	},
 	category: 'MyBlock',
 	description: "This is my test block",
-	keywords:[__('test'),__('test-block'),__('block')],
-	edit: function (props) {
-		return ( <div className="className">
-			<h1>Hello</h1>
-		</div> )
+	keywords: [__('test'), __('test-block'), __('block')],
+	supports: {
+		align: ['left', 'right', 'center'],
+		anchor: true,
+		customClassName:false
 	},
-	save: function (props) {
-		return ( <div className="className">
-					<h1>Hello Al-Amin</h1>
-				</div> )
-	}
+	edit: function (props) {
+
+		console.log(useBlockProps());
+		return (<div {...useBlockProps()}>
+			<h1>alamin</h1>
+		</div> );
+	},
+	save: save,
 } );

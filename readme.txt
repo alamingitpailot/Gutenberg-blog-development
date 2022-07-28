@@ -53,3 +53,27 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
 plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
 "installation." Arbitrary sections will be shown below the built-in sections outlined above.
+
+## Gutenberg Block Development Basic Concept
+### কি ভাবে ব্লক Custom Category Add করবো 
+#### নিচে Code গুলি দেখি 
+```
+add_filter('block_categories','custom_categories',10,2);
+// categories add block 
+function custom_categories($cat,$post) {
+
+	if('page' !== get_post_type($post)){
+		return $cat;
+	}
+
+	return array_merge($cat,array(
+		array(
+			'slug' => 'MyBlock',
+			'title' => 'Custom MyBlock'
+		)));
+}
+
+```
+
+
+
